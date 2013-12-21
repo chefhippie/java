@@ -17,8 +17,23 @@
 # limitations under the License.
 #
 
-default["java"]["packages"] = %w(
-  java-ca-certificates
-  java-1_7_0-openjdk
-  java-1_7_0-openjdk-devel
-)
+case node["platform_family"]
+when "debian"
+  default["java"]["packages"] = %w(
+    ca-certificates-java
+    openjdk-7-jre
+    openjdk-7-jre-headless
+  )
+when "ubuntu"
+  default["java"]["packages"] = %w(
+    ca-certificates-java
+    openjdk-7-jre
+    openjdk-7-jre-headless
+  )
+when "suse"
+  default["java"]["packages"] = %w(
+    java-ca-certificates
+    java-1_7_0-openjdk
+    java-1_7_0-openjdk-devel
+  )
+end
