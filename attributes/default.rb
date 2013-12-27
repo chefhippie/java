@@ -17,23 +17,20 @@
 # limitations under the License.
 #
 
-case node["platform_family"]
-when "debian"
-  default["java"]["packages"] = %w(
+default["java"]["packages"] = value_for_platform_family(
+  "debian" => %w(
     ca-certificates-java
     openjdk-7-jre
     openjdk-7-jre-headless
-  )
-when "ubuntu"
-  default["java"]["packages"] = %w(
+  ),
+  "ubuntu" => %w(
     ca-certificates-java
     openjdk-7-jre
     openjdk-7-jre-headless
-  )
-when "suse"
-  default["java"]["packages"] = %w(
+  ),
+  "suse" => %w(
     java-ca-certificates
     java-1_7_0-openjdk
     java-1_7_0-openjdk-devel
   )
-end
+)
