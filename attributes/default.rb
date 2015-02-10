@@ -23,14 +23,29 @@ default["java"]["packages"] = value_for_platform_family(
     openjdk-7-jre
     openjdk-7-jre-headless
   ),
-  "ubuntu" => %w(
-    ca-certificates-java
-    openjdk-7-jre
-    openjdk-7-jre-headless
-  ),
-  "suse" => %w(
-    java-ca-certificates
-    java-1_7_0-openjdk
-    java-1_7_0-openjdk-devel
+  "suse" => value_for_platform(
+    "opensuse" => {
+      "< 13.2" => %w(
+        java-ca-certificates
+        java-1_7_0-openjdk
+        java-1_7_0-openjdk-devel
+      ),
+      "default" => %w(
+        java-1_8_0-openjdk
+        java-1_8_0-openjdk-devel
+      )
+    },
+    "suse" => {
+      "< 12" => %w(
+        java-ca-certificates
+        java-1_7_0-openjdk
+        java-1_7_0-openjdk-devel
+      ),
+      "default" => %w(
+        java-ca-certificates
+        java-1_8_0-openjdk
+        java-1_8_0-openjdk-devel
+      )
+    }
   )
 )
