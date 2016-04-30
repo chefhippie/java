@@ -35,6 +35,12 @@ default["java"]["packages"] = value_for_platform_family(
         java-1_8_0-openjdk-devel
       )
     },
+    "opensuseleap" => {
+      "default" => %w(
+        java-1_8_0-openjdk
+        java-1_8_0-openjdk-devel
+      )
+    },
     "suse" => {
       "< 12" => %w(
         java-ca-certificates
